@@ -1,0 +1,31 @@
+{
+  "name": "arc-tabs",
+  "title": "Arc Tabs",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src",
+  "icon": "icon-dark.png",
+  "priority": 100,
+  "description": "Search open tabs in Arc.",
+  "preferences": [
+    {
+      "name": "Arc Profile",
+      "title": "Arc Profile",
+      "description": "The profile used for Arc",
+      "type": "browser_profile",
+      "required": false,
+      "default": "~/Library/Application Support/Arc/User Data/Default"
+    }
+  ],
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "dependencies": {
+    "@taab-app/api": "^0.0.13",
+    "@taab-app/utils": "^0.0.5",
+    "run-applescript": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17"
+  }
+}

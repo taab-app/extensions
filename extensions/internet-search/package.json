@@ -1,0 +1,21 @@
+{
+  "name": "internet-search",
+  "title": "Internet Search",
+  "version": "0.0.1",
+  "private": true,
+  "priority": 1,
+  "main": "src",
+  "icon": "chrome-icon.png",
+  "description": "Search on Google, Maps, Youtube, Wikipedia",
+  "preferences": [],
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "dependencies": {
+    "@taab-app/api": "^0.0.13",
+    "@taab-app/utils": "^0.0.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17"
+  }
+}

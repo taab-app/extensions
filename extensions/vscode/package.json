@@ -1,0 +1,24 @@
+{
+  "name": "vscode",
+  "title": "vscode",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src",
+  "icon": "icon.png",
+  "priority": 50,
+  "description": "Search recent files in vscode",
+  "preferences": [],
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "dependencies": {
+    "@taab-app/api": "^0.0.13",
+    "@taab-app/utils": "^0.0.5",
+    "object-hash": "^3.0.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "bun-types": "0.8.1",
+    "@types/react": "^18.0.17"
+  }
+}
