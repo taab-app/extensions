@@ -12,8 +12,8 @@
     "react": "^18.2.0"
   },
   "dependencies": {
-    "@taab-app/api": "^0.0.14",
-    "@taab-app/utils": "^0.0.6",
+    "@taab-app/api": "^0.0.15",
+    "@taab-app/utils": "^0.0.7",
     "object-hash": "^3.0.0",
     "uuid": "^9.0.0"
   },
