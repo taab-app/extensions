@@ -21,6 +21,8 @@ const ExtensionContent = memo(function ExtensionContent({
   isLoading: boolean;
   items: any;
 }) {
+  console.log("items", items);
+
   return (
     <List loading={isLoading}>
       {(items || []).map((item: any) => {

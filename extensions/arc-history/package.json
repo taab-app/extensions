@@ -7,6 +7,9 @@
   "icon": "icon-dark.png",
   "priority": 50,
   "description": "Search history in Arc.",
+  "scripts": {
+    "test": "vitest run"
+  },
   "preferences": [
     {
       "name": "Arc Profile",
@@ -28,6 +31,9 @@
   },
   "devDependencies": {
     "bun-types": "0.8.1",
-    "@types/react": "^19.1.0"
+    "@types/react": "^19.1.0",
+    "react-test-renderer": "^19.1.0",
+    "vitest": "^3.2.4",
+    "jsdom": "^25.0.0"
   }
 }

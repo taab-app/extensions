@@ -7,6 +7,9 @@
   "icon": "chrome-icon.png",
   "priority": 99,
   "description": "Search open tabs in Google Chrome.",
+  "scripts": {
+    "test": "vitest run"
+  },
   "preferences": [
     {
       "name": "Chrome Profile",
@@ -26,6 +29,9 @@
     "run-applescript": "^6.1.0"
   },
   "devDependencies": {
-    "@types/react": "^19.1.0"
+    "@types/react": "^19.1.0",
+    "react-test-renderer": "^19.1.0",
+    "vitest": "^3.2.4",
+    "jsdom": "^25.0.0"
   }
 }
