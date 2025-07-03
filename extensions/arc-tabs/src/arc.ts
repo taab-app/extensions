@@ -4,15 +4,43 @@ import { Tab } from "./types";
 // Tabs
 
 export async function getTabs() {
-  const response = await runAppleScript(`
+  try {
+    const response = await runAppleScript(`
     on escape_value(this_text)
-      set AppleScript's text item delimiters to the "\\""
+      set this_text to this_text as string
+      -- Escape backslashes first
+      set AppleScript's text item delimiters to "\\\\"
       set the item_list to every text item of this_text
-      set AppleScript's text item delimiters to the "\\\\\\""
+      set AppleScript's text item delimiters to "\\\\\\\\"
       set this_text to the item_list as string
+      
+      -- Escape quotes
+      set AppleScript's text item delimiters to "\\""
+      set the item_list to every text item of this_text
+      set AppleScript's text item delimiters to "\\\\\\""
+      set this_text to the item_list as string
+      
+      -- Escape newlines
+      set AppleScript's text item delimiters to "\\n"
+      set the item_list to every text item of this_text
+      set AppleScript's text item delimiters to "\\\\n"
+      set this_text to the item_list as string
+      
+      -- Escape carriage returns
+      set AppleScript's text item delimiters to "\\r"
+      set the item_list to every text item of this_text
+      set AppleScript's text item delimiters to "\\\\r"
+      set this_text to the item_list as string
+      
+      -- Escape tabs
+      set AppleScript's text item delimiters to "\\t"
+      set the item_list to every text item of this_text
+      set AppleScript's text item delimiters to "\\\\t"
+      set this_text to the item_list as string
+      
       set AppleScript's text item delimiters to ""
       return this_text
-    end replace_chars
+    end escape_value
 
     set _output to ""
 
@@ -23,8 +51,8 @@ export async function getTabs() {
         
         repeat with _tab in tabs of first window
           set _title to my escape_value(get title of _tab)
-          set _url to get URL of _tab
-          set _location to get location of _tab
+          set _url to my escape_value(get URL of _tab)
+          set _location to my escape_value(get location of _tab)
           
           set _output to (_output & "{ \\"title\\": \\"" & _title & "\\", \\"url\\": \\"" & _url & "\\", \\"windowId\\": " & _window_index & ", \\"tabId\\": " & _tab_index & " , \\"location\\": \\"" & _location & "\\" }")
           
@@ -42,7 +70,10 @@ export async function getTabs() {
     return "[\\n" & _output & "\\n]"
   `);
 
-  return response ? (JSON.parse(response) as Tab[]) : undefined;
+    return response ? (JSON.parse(response) as Tab[]) : [];
+  } catch (error) {
+    return [];
+  }
 }
 
 export async function selectTab(tab: Tab) {
