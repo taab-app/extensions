@@ -1,8 +1,8 @@
 import _ from "lodash";
 import { homedir } from "os";
 import { useCallback, useEffect, useState } from "react";
-import { readFile } from "simple-plist";
-import { promisify } from "util";
+import fs from "fs";
+import bplistParser from "bplist-parser";
 import {
   Bookmark,
   BookmarkPListResult,
@@ -10,8 +10,6 @@ import {
   ReadingListBookmark,
 } from "./types";
 import { getUrlDomain } from "./utils";
-
-export const readPlist = promisify(readFile);
 
 export const PLIST_PATH = `${homedir()}/Library/Safari/Bookmarks.plist`;
 
@@ -84,11 +82,11 @@ export default function useBookmarks(readingListOnly?: boolean) {
   const [isLoading, setIsLoading] = useState(false);
   const fetchItems = useCallback(async () => {
     try {
-      const safariBookmarksPlist = (await readPlist(
-        PLIST_PATH
-      )) as BookmarkPListResult;
+      const safariBookmarksPlist = fs.readFileSync(PLIST_PATH);
+      const [safariBookmarksPlistParsed] =
+        bplistParser.parseBuffer(safariBookmarksPlist);
       const bookmarks = extractReadingListBookmarks(
-        safariBookmarksPlist,
+        safariBookmarksPlistParsed,
         readingListOnly
       );
       setBookmarks(bookmarks);
