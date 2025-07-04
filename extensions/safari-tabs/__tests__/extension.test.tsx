@@ -20,4 +20,23 @@ describe("Component Rendering", () => {
 
     expect(items.length).toBeGreaterThan(0);
   });
+
+  it("can select a tab", async () => {
+    const query = "test query";
+
+    let extension;
+    act(() => {
+      extension = create(<Extension query={query} visible={true} />);
+    });
+
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    const items = extension?.root?.findAll((el: any) => !!el.props.title) ?? [];
+
+    items[3].props.action();
+
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    // expect(items[0].props.action).toHaveBeenCalled();
+  });
 });

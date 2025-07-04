@@ -46,14 +46,14 @@ export async function getTabs() {
 
 export async function setActiveTab(tab: Tab): Promise<void> {
   await runAppleScript(`
-  tell application "Safari"
-      set windowID to ${tab.windowsId}
-      set tabID to ${tab.tabIndex}
-      set windowObj to window id windowID
-      set tabObj to tab tabID of windowObj
-      set index of windowObj to 1
-      set current tab of windowObj to tabObj
-      activate
+    tell application "Safari"
+        set windowIndex to ${tab.windowsId}
+        set tabIndex to ${tab.tabIndex}
+        set windowObj to window windowIndex
+        set tabObj to tab tabIndex of windowObj
+        set index of windowObj to 1
+        set current tab of windowObj to tabObj
+        activate
     end tell
   `);
 }
