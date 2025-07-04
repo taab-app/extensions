@@ -9,7 +9,7 @@
   "description": "Search on Google, Maps, Youtube, Wikipedia",
   "preferences": [],
   "scripts": {
-    "test": "vitest run"
+    "test": "bun test"
   },
   "peerDependencies": {
     "react": "^19.1.0"
@@ -19,9 +19,8 @@
     "@taab-app/utils": "^0.0.8"
   },
   "devDependencies": {
+    "bun-types": "^1.2.18",
     "@types/react": "^19.1.0",
-    "react-test-renderer": "^19.1.0",
-    "vitest": "^3.2.4",
-    "jsdom": "^25.0.0"
+    "react-test-renderer": "^19.1.0"
   }
 }

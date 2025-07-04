@@ -8,7 +8,7 @@
   "priority": 50,
   "description": "Search history in Arc.",
   "scripts": {
-    "test": "vitest run"
+    "test": "bun test"
   },
   "preferences": [
     {
@@ -26,14 +26,11 @@
   "dependencies": {
     "@taab-app/api": "^0.0.16",
     "@taab-app/utils": "^0.0.8",
-    "run-applescript": "^6.1.0",
-    "object-hash": "^3.0.0"
+    "run-applescript": "^6.1.0"
   },
   "devDependencies": {
-    "bun-types": "0.8.1",
+    "bun-types": "^1.2.18",
     "@types/react": "^19.1.0",
-    "react-test-renderer": "^19.1.0",
-    "vitest": "^3.2.4",
-    "jsdom": "^25.0.0"
+    "react-test-renderer": "^19.1.0"
   }
 }
